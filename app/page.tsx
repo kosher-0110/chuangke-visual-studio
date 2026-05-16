@@ -6,6 +6,7 @@ import CinematicReel from "@/components/CinematicReel";
 import HeroKineticTitle from "@/components/HeroKineticTitle";
 import StatementBand from "@/components/StatementBand";
 import StudioArtifact from "@/components/StudioArtifact";
+import ToolMarquee from "@/components/ToolMarquee";
 import WorkCard from "@/components/WorkCard";
 import { works } from "@/data/works";
 
@@ -43,10 +44,10 @@ export default function Home() {
             AI Films · Brand Visuals · Cinematic Campaigns
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a href="#work" className="cinematic-button bg-bone text-ink hover:text-bone">
+            <a href="#work" className="cinematic-button bg-bone text-ink hover:text-bone" data-cursor="button">
               View Work
             </a>
-            <a href="#contact" className="cinematic-button">
+            <a href="#contact" className="cinematic-button" data-cursor="button">
               Contact
             </a>
           </div>
@@ -105,6 +106,8 @@ export default function Home() {
         </div>
       </section>
 
+      <ToolMarquee />
+
       <section className="px-5 py-24 md:py-36">
         <motion.div {...fadeUp} className="mx-auto max-w-5xl">
           <p className="mb-6 text-xs uppercase tracking-studio text-bone/42">About</p>
@@ -131,7 +134,7 @@ export default function Home() {
             <p className="mt-7 max-w-2xl text-base leading-8 text-bone/58 md:text-lg">
               For brand films, AI visual campaigns, music videos and experimental storytelling.
             </p>
-            <a href="mailto:hello@zoor.studio" className="cinematic-button mt-9 bg-bone text-ink hover:text-bone">
+            <a href="mailto:hello@zoor.studio" className="cinematic-button mt-9 bg-bone text-ink hover:text-bone" data-cursor="button">
               Start a Project
             </a>
           </div>

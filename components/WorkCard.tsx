@@ -1,11 +1,11 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Work } from "@/data/works";
 import { getYoutubeThumbnail } from "@/data/works";
 import MediaImage from "@/components/MediaImage";
+import TransitionLink from "@/components/TransitionLink";
 
 type WorkCardProps = {
   work: Work;
@@ -66,7 +66,7 @@ export default function WorkCard({ work, index }: WorkCardProps) {
       onPointerLeave={resetTilt}
       className={`group ${layoutClass}`}
     >
-      <Link href={`/work/${work.slug}`} className="block">
+      <TransitionLink href={`/work/${work.slug}`} className="block" data-cursor="view">
         <div className={`media-fallback relative overflow-hidden border border-line bg-graphite ${aspectClass}`}>
           <MediaImage
             src={youtubePoster}
@@ -74,6 +74,11 @@ export default function WorkCard({ work, index }: WorkCardProps) {
             className="h-full w-full object-cover opacity-85 transition duration-1000 ease-cinematic group-hover:scale-[1.035] group-hover:opacity-60"
             loading="lazy"
           />
+
+          <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-700 ease-cinematic group-hover:opacity-100">
+            <div className="absolute inset-y-[-20%] left-[-55%] w-[42%] rotate-12 bg-gradient-to-r from-transparent via-white/28 to-transparent blur-sm transition-transform duration-[1200ms] ease-cinematic group-hover:translate-x-[360%]" />
+            <div className="absolute inset-0 border border-white/0 transition duration-700 ease-cinematic group-hover:border-white/24" />
+          </div>
 
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/25 bg-black/40 opacity-0 transition duration-700 ease-cinematic group-hover:opacity-100">
@@ -94,7 +99,7 @@ export default function WorkCard({ work, index }: WorkCardProps) {
             <p className="mt-5 text-[0.64rem] uppercase tracking-[0.14em] text-bone/42">{work.atmosphere}</p>
           </div>
         </div>
-      </Link>
+      </TransitionLink>
     </motion.article>
   );
 }

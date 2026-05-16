@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Work } from "@/data/works";
 import { getYoutubeEmbed } from "@/data/works";
+import TransitionLink from "@/components/TransitionLink";
 
 const fadeSection = {
   initial: { opacity: 0, y: 18 },
@@ -15,9 +15,9 @@ export default function WorkContent({ work }: { work: Work }) {
   return (
     <main className="min-h-screen bg-ink px-5 py-6 text-bone md:py-8">
       <nav className="mx-auto flex max-w-7xl items-center justify-between text-xs uppercase tracking-studio text-bone/45">
-        <Link href="/#work" className="transition duration-500 hover:text-bone">
+        <TransitionLink href="/#work" className="transition duration-500 hover:text-bone" data-cursor="button">
           Back to Work
-        </Link>
+        </TransitionLink>
         <span>ZOOR Visual Studio</span>
       </nav>
 
@@ -71,9 +71,9 @@ export default function WorkContent({ work }: { work: Work }) {
         transition={{ ...fadeSection.transition, delay: 0.2 }}
         className="mx-auto max-w-7xl py-16 text-center md:py-24"
       >
-        <Link href="/#work" className="cinematic-button">
+        <TransitionLink href="/#work" className="cinematic-button" data-cursor="button">
           Return to Work
-        </Link>
+        </TransitionLink>
       </motion.section>
     </main>
   );

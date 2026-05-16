@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorOverlay from "@/components/CursorOverlay";
+import PageTransitionProvider from "@/components/PageTransitionProvider";
 
 export const metadata: Metadata = {
   title: "ZOOR Visual Studio",
@@ -17,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SmoothScroll />
-        <CursorOverlay />
-        {children}
-        <div className="noise-overlay" aria-hidden="true" />
+        <PageTransitionProvider>
+          <SmoothScroll />
+          <CursorOverlay />
+          {children}
+          <div className="noise-overlay" aria-hidden="true" />
+        </PageTransitionProvider>
       </body>
     </html>
   );
