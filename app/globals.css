@@ -89,26 +89,6 @@ a {
   position: relative;
 }
 
-.hero-title-main::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset: -4% -8%;
-  background: linear-gradient(
-    105deg,
-    transparent 0%,
-    transparent 38%,
-    rgba(255, 255, 255, 0.52) 48%,
-    rgba(255, 255, 255, 0.12) 52%,
-    transparent 64%,
-    transparent 100%
-  );
-  mix-blend-mode: screen;
-  opacity: 0.55;
-  transform: translateX(-130%) skewX(-12deg);
-  animation: title-light-sweep 6.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
-}
-
 .hero-title-line {
   display: block;
   font-size: clamp(5.5rem, 14vw, 15rem);
@@ -117,24 +97,25 @@ a {
   transform: translateZ(36px);
 }
 
-@keyframes title-light-sweep {
-  0%,
-  28% {
-    transform: translateX(-130%) skewX(-12deg);
-  }
-
-  56%,
-  100% {
-    transform: translateX(130%) skewX(-12deg);
-  }
-}
-
 @media (max-width: 767px) {
   .hero-title-line {
     font-size: clamp(4rem, 22vw, 7.5rem);
     letter-spacing: -0.035em;
   }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  [data-cursor="interactive"] {
+    cursor: none;
+  }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   *,
