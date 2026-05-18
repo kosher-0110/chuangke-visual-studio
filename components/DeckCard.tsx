@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import type { BrandDeck } from "@/data/decks";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { useState } from "react";
 import TransitionLink from "@/components/TransitionLink";
 
@@ -13,6 +14,10 @@ type DeckCardProps = {
 
 export default function DeckCard({ deck, index }: DeckCardProps) {
   const [coverMissing, setCoverMissing] = useState(false);
+  const accent = deck.accent ?? "rgba(242, 240, 234, 0.18)";
+  const accentStyle = {
+    "--deck-accent": accent
+  } as CSSProperties;
 
   return (
     <motion.article
@@ -24,7 +29,7 @@ export default function DeckCard({ deck, index }: DeckCardProps) {
     >
       <TransitionLink href={`/decks/${deck.slug}`} className="block" data-cursor="view">
         <div className="border border-line bg-[#0b0b0a] p-3 transition duration-700 ease-cinematic group-hover:border-white/24 group-hover:bg-white/[0.025] md:p-4">
-          <div className="media-fallback relative aspect-[4/3] overflow-hidden border border-white/10 bg-[#151513]">
+          <div className="media-fallback relative aspect-[4/3] overflow-hidden border border-white/10 bg-[#151513]" style={accentStyle}>
             {coverMissing ? (
               <iframe
                 src={`${deck.pdf}#page=1&toolbar=0&navpanes=0`}
@@ -34,16 +39,19 @@ export default function DeckCard({ deck, index }: DeckCardProps) {
               />
             ) : (
               <Image
-                src={deck.cover}
+                src={`${deck.cover}?v=accent-2`}
                 alt={`${deck.title} 封面`}
                 fill
                 sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                className="object-cover opacity-78 saturate-[0.82] transition duration-1000 ease-cinematic group-hover:scale-[1.025] group-hover:opacity-70 group-hover:saturate-100"
+                className="object-cover opacity-100 brightness-[1.08] contrast-[1.08] saturate-[1.55] transition duration-1000 ease-cinematic group-hover:scale-[1.025] group-hover:brightness-[1.12] group-hover:saturate-[1.85]"
                 loading="lazy"
+                unoptimized
                 onError={() => setCoverMissing(true)}
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/18 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_76%_18%,var(--deck-accent),transparent_34%),linear-gradient(115deg,transparent_0%,var(--deck-accent)_52%,transparent_68%)] opacity-28 mix-blend-screen transition duration-1000 ease-cinematic group-hover:opacity-44" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[var(--deck-accent)] opacity-55" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/34 via-black/5 to-transparent" />
             <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-700 ease-cinematic group-hover:opacity-100">
               <div className="absolute inset-y-[-20%] left-[-55%] w-[38%] rotate-12 bg-gradient-to-r from-transparent via-white/18 to-transparent blur-sm transition-transform duration-[1200ms] ease-cinematic group-hover:translate-x-[370%]" />
             </div>

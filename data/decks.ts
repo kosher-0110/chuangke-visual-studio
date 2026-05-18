@@ -8,6 +8,7 @@ export type BrandDeck = {
   summary: string;
   pdf: string;
   cover: string;
+  accent?: string;
   featured: boolean;
 };
 
@@ -24,6 +25,7 @@ export const brandDecks: BrandDeck[] = [
     summary: "夜乐园品牌视觉系统，涵盖 LOGO、色彩体系与空间导视。",
     pdf: `${deckPath("all-yele")}/brand-system.pdf`,
     cover: `${deckPath("all-yele")}/cover.png`,
+    accent: "rgba(36, 218, 229, 0.42)",
     featured: true
   },
   {
@@ -36,6 +38,7 @@ export const brandDecks: BrandDeck[] = [
     summary: "Golden Face 品牌提案与视觉系统，从主视觉到传播物料完整落地。",
     pdf: `${deckPath("golden-face")}/brand-system.pdf`,
     cover: `${deckPath("golden-face")}/cover.png`,
+    accent: "rgba(206, 151, 62, 0.4)",
     featured: true
   },
   {
@@ -48,6 +51,7 @@ export const brandDecks: BrandDeck[] = [
     summary: "莫对月品牌视觉提案，以东方美学构建品牌叙事与视觉系统。",
     pdf: `${deckPath("moduiyue")}/brand-system.pdf`,
     cover: `${deckPath("moduiyue")}/cover.png`,
+    accent: "rgba(212, 143, 54, 0.36)",
     featured: true
   },
   {
