@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { BrandDeck } from "@/data/decks";
-
+import Image from "next/image";
 import TransitionLink from "@/components/TransitionLink";
 
 type DeckCardProps = {
@@ -22,10 +22,14 @@ export default function DeckCard({ deck, index }: DeckCardProps) {
       <TransitionLink href={`/decks/${deck.slug}`} className="block" data-cursor="view">
         <div className="border border-line bg-[#0b0b0a] p-4 transition duration-700 ease-cinematic group-hover:border-white/24 group-hover:bg-white/[0.025]">
           <div className="media-fallback relative aspect-[4/3] overflow-hidden border border-white/10 bg-[#151513]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(242,240,234,0.06),transparent_18rem)]" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-display text-[clamp(1.5rem,4vw,3rem)] uppercase leading-none text-bone/12">{deck.category}</span>
-            </div>
+            <Image
+              src={`/decks/${deck.slug}/cover.jpg`}
+              alt={`${deck.title} 封面`}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              className="object-cover opacity-68 grayscale transition duration-1000 ease-cinematic group-hover:scale-[1.025] group-hover:opacity-56"
+              loading="lazy"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/18 to-transparent" />
             <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-700 ease-cinematic group-hover:opacity-100">
               <div className="absolute inset-y-[-20%] left-[-55%] w-[38%] rotate-12 bg-gradient-to-r from-transparent via-white/18 to-transparent blur-sm transition-transform duration-[1200ms] ease-cinematic group-hover:translate-x-[370%]" />
