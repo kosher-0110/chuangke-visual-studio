@@ -38,7 +38,7 @@ export default function DeckCard({ deck, index }: DeckCardProps) {
                 alt={`${deck.title} 封面`}
                 fill
                 sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                className="object-cover opacity-72 grayscale transition duration-1000 ease-cinematic group-hover:scale-[1.025] group-hover:opacity-62"
+                className="object-cover opacity-78 saturate-[0.82] transition duration-1000 ease-cinematic group-hover:scale-[1.025] group-hover:opacity-70 group-hover:saturate-100"
                 loading="lazy"
                 onError={() => setCoverMissing(true)}
               />

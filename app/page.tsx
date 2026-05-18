@@ -71,7 +71,7 @@ export default function Home() {
           <p className="mt-6 text-xs uppercase tracking-studio text-bone/62 md:mt-8 md:text-sm">
             品牌故事 · 品牌视觉 · 整合传播
           </p>
-          <div className="mt-8 flex w-full max-w-xs flex-col gap-3 sm:flex-row md:mt-10 md:max-w-none">
+          <div className="mt-8 flex w-full max-w-xs flex-col items-center justify-center gap-3 sm:flex-row md:mt-10 md:max-w-none">
             <a href="#work" className="cinematic-button bg-bone text-ink hover:text-bone" data-cursor="button">
               查看案例
             </a>

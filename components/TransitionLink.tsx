@@ -1,7 +1,7 @@
 "use client";
 
 import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
-import { useTransition } from "@/components/PageTransitionProvider";
+import { useRouter } from "next/navigation";
 
 type TransitionLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children: ReactNode;
@@ -14,53 +14,31 @@ export default function TransitionLink({
   onClick,
   ...props
 }: TransitionLinkProps) {
-  const { navigate } = useTransition();
+  const router = useRouter();
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event);
 
-    if (event.defaultPrevented) {
-      return;
-    }
-
     if (
+      event.defaultPrevented ||
       event.metaKey ||
       event.ctrlKey ||
       event.shiftKey ||
       event.altKey ||
       props.target === "_blank" ||
+      href.startsWith("#") ||
       href.startsWith("mailto:") ||
       /^https?:\/\//.test(href)
     ) {
       return;
     }
 
-    if (href.includes("#")) {
-      event.preventDefault();
-
-      const [path, hash] = href.split("#");
-      const targetPath = path || window.location.pathname;
-      const currentPath = window.location.pathname;
-
-      if (targetPath === currentPath) {
-        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
-        return;
-      }
-
-      window.location.assign(href);
-      return;
-    }
-
     event.preventDefault();
-    navigate(href);
+    router.push(href);
   };
 
   return (
-    <a
-      href={href}
-      onClick={handleClick}
-      {...props}
-    >
+    <a href={href} onClick={handleClick} {...props}>
       {children}
     </a>
   );
