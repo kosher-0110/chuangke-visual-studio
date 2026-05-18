@@ -6,91 +6,91 @@ export type Work = {
   concept: string;
   role: string;
   tools: string[];
-  youtubeId: string;
+  bvid: string;
   atmosphere: string;
   layout: "featured" | "standard" | "tall" | "wide";
 };
 
-export function getYoutubeThumbnail(youtubeId: string, quality: "default" | "mq" | "hq" | "maxres" = "maxres") {
-  if (!youtubeId || youtubeId === "YOUR_VIDEO_ID") return "";
-  return `https://img.youtube.com/vi/${youtubeId}/${quality}default.jpg`;
+export function getBilibiliEmbed(bvid: string) {
+  return `https://player.bilibili.com/player.html?bvid=${bvid}&page=1&autoplay=0`;
 }
 
-export function getYoutubeEmbed(youtubeId: string) {
-  return `https://www.youtube.com/embed/${youtubeId}`;
+export function getVideoThumbnail(bvid: string) {
+  if (!bvid) return "";
+  return "";
 }
 
 export const works: Work[] = [
   {
-    title: "Molecular Light",
-    type: "AI Brand Film",
-    year: "2026",
-    slug: "molecular-light",
-    concept: "A luminous brand film imagining biotech matter as living cinematic architecture.",
-    role: "Creative direction, AI visual development, cinematic edit, prompt system design",
-    tools: ["Runway", "Midjourney", "After Effects", "DaVinci Resolve"],
-    youtubeId: "YOUR_VIDEO_ID",
-    atmosphere: "Biotech / luminous / controlled",
+    title: "公司宣传片",
+    type: "品牌影片",
+    year: "2025",
+    slug: "company-reel",
+    concept: "福建创科文化传媒品牌宣传片，展示品牌视觉系统与创意能力。",
+    role: "创意方向、AI 视觉开发、剪辑",
+    tools: ["After Effects", "DaVinci Resolve", "Midjourney"],
+    bvid: "BV1mCLc6dEpk",
+    atmosphere: "品牌 / 专业 / 视觉",
     layout: "featured"
   },
   {
-    title: "White Lab",
-    type: "Biotech TVC",
-    year: "2026",
-    slug: "white-lab",
-    concept: "Clinical purity translated into quiet cinematic tension and premium product light.",
-    role: "Visual direction, AI scene development, campaign mood system",
+    title: "AI 创意动画",
+    type: "AI 动态视觉",
+    year: "2025",
+    slug: "ai-creative",
+    concept: "AI 驱动的创意动画短片，探索视觉叙事与动态设计。",
+    role: "AI 视觉开发、动画设计、创意方向",
     tools: ["Runway", "Midjourney", "After Effects"],
-    youtubeId: "YOUR_VIDEO_ID",
-    atmosphere: "White space / precision / sterile calm",
+    bvid: "BV1mCLc6dEVm",
+    atmosphere: "创意 / AI / 动态",
     layout: "standard"
   },
   {
-    title: "Particle Memory",
-    type: "Experimental Visual",
-    year: "2026",
-    slug: "particle-memory",
-    concept: "An abstract memory field rendered through tactile light, dust, and image decay.",
-    role: "Concept, AI visual research, motion treatment",
-    tools: ["Runway", "ComfyUI", "DaVinci Resolve"],
-    youtubeId: "YOUR_VIDEO_ID",
-    atmosphere: "Texture / memory / image decay",
+    title: "品牌 LOGO AI 动态",
+    type: "品牌视觉",
+    year: "2025",
+    slug: "logo-ai-motion",
+    concept: "品牌 LOGO 的 AI 动态效果设计，赋予静态标识生命力。",
+    role: "AI 动态设计、品牌视觉、动画",
+    tools: ["Runway", "After Effects"],
+    bvid: "BV1TCLc6oEBj",
+    atmosphere: "品牌 / 动态 / 标识",
     layout: "standard"
   },
   {
-    title: "Digital Insect",
-    type: "AI Visual Study",
-    year: "2026",
-    slug: "digital-insect",
-    concept: "A macro visual study where synthetic biology meets product-grade cinematic detail.",
-    role: "AI look development, prompt design, motion exploration",
-    tools: ["Midjourney", "Runway", "After Effects"],
-    youtubeId: "YOUR_VIDEO_ID",
-    atmosphere: "Macro / synthetic biology / detail",
+    title: "Hotel Promotional Video",
+    type: "商业宣传片",
+    year: "2025",
+    slug: "hotel-promo",
+    concept: "酒店品牌宣传视频，以电影化画面呈现空间与氛围。",
+    role: "视觉方向、剪辑、调色",
+    tools: ["DaVinci Resolve", "After Effects"],
+    bvid: "BV1MCLc6oEc7",
+    atmosphere: "商业 / 空间 / 质感",
     layout: "tall"
   },
   {
-    title: "Future Medicine",
-    type: "Campaign Film",
-    year: "2026",
-    slug: "future-medicine",
-    concept: "A future-facing campaign film shaped around medical trust, human scale, and precision.",
-    role: "Campaign concept, visual direction, AI film pipeline",
-    tools: ["Runway", "Midjourney", "After Effects", "DaVinci Resolve"],
-    youtubeId: "YOUR_VIDEO_ID",
-    atmosphere: "Human trust / future medicine / clarity",
+    title: "创意视频",
+    type: "创意短片",
+    year: "2025",
+    slug: "creative-video",
+    concept: "实验性创意短片，融合动态设计与视觉特效。",
+    role: "概念、视觉开发、动态设计",
+    tools: ["Runway", "After Effects", "ComfyUI"],
+    bvid: "BV1MCLc6oEg4",
+    atmosphere: "实验 / 创意 / 视觉",
     layout: "wide"
   },
   {
-    title: "Mirror Portal",
-    type: "AI Short Film",
-    year: "2026",
-    slug: "mirror-portal",
-    concept: "A surreal short film about identity, reflection, and passage through a visual threshold.",
-    role: "Film concept, storyboard, AI video direction, edit",
-    tools: ["Runway", "Midjourney", "Premiere Pro", "DaVinci Resolve"],
-    youtubeId: "YOUR_VIDEO_ID",
-    atmosphere: "Surreal / reflective / threshold",
+    title: "Artist Videos",
+    type: "艺人视觉",
+    year: "2025",
+    slug: "artist-videos",
+    concept: "艺人视觉视频，打造具有辨识度的视觉风格。",
+    role: "视觉方向、调色、剪辑",
+    tools: ["DaVinci Resolve", "Premiere Pro", "After Effects"],
+    bvid: "BV1mCLc6dEpZ",
+    atmosphere: "艺人 / 视觉 / 风格",
     layout: "standard"
   }
 ];

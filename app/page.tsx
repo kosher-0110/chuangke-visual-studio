@@ -55,21 +55,23 @@ export default function Home() {
 
   return (
     <main className="bg-ink text-bone">
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5">
-        <AbstractLight />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,5,5,0.2)_38%,#050505_82%)]" />
+      <section className="relative flex min-h-[86svh] items-center justify-center overflow-hidden px-4 md:min-h-screen md:px-5">
+        <div className="hidden md:block">
+          <AbstractLight />
+        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_32%,rgba(242,240,234,0.08),transparent_18rem),radial-gradient(circle_at_center,transparent_0%,rgba(5,5,5,0.2)_38%,#050505_82%)] md:bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,5,5,0.2)_38%,#050505_82%)]" />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
           className="relative z-10 mx-auto flex max-w-6xl flex-col items-center text-center"
         >
-          <p className="mb-8 text-xs uppercase tracking-studio text-bone/45">福建创科文化传媒有限公司</p>
+          <p className="mb-6 text-[0.68rem] uppercase tracking-studio text-bone/45 md:mb-8 md:text-xs">福建创科文化传媒有限公司</p>
           <HeroKineticTitle />
-          <p className="mt-8 text-xs uppercase tracking-studio text-bone/62 md:text-sm">
+          <p className="mt-6 text-xs uppercase tracking-studio text-bone/62 md:mt-8 md:text-sm">
             品牌故事 · 品牌视觉 · 整合传播
           </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex w-full max-w-xs flex-col gap-3 sm:flex-row md:mt-10 md:max-w-none">
             <a href="#work" className="cinematic-button bg-bone text-ink hover:text-bone" data-cursor="button">
               查看案例
             </a>
@@ -83,11 +85,13 @@ export default function Home() {
         </div>
       </section>
 
-      <CinematicReel works={works} />
+      <div className="hidden md:block">
+        <CinematicReel works={works} />
+      </div>
 
-      <section id="work" className="px-5 py-24 md:py-36">
+      <section id="work" className="px-4 py-[4.5rem] md:px-5 md:py-36">
         <div className="mx-auto max-w-7xl">
-          <motion.div {...fadeUp} className="mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
+          <motion.div {...fadeUp} className="mb-10 flex flex-col justify-between gap-5 md:mb-16 md:flex-row md:items-end">
             <div>
               <p className="mb-4 text-xs uppercase tracking-studio text-bone/42">精选案例 / Selected Works</p>
               <h2 className="font-display text-4xl uppercase leading-none md:text-6xl">品牌视觉系统</h2>
@@ -97,14 +101,14 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid auto-rows-auto gap-7 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid auto-rows-auto gap-5 md:grid-cols-2 md:gap-7 xl:grid-cols-3">
             {works.map((work, index) => (
               <WorkCard key={work.slug} work={work} index={index} />
             ))}
           </div>
 
-          <div className="mt-12 flex justify-center">
-            <TransitionLink href="/work" className="cinematic-button" data-cursor="button">
+          <div className="mt-10 flex justify-center md:mt-12">
+            <TransitionLink href="/work" className="cinematic-button w-full sm:w-auto" data-cursor="button">
               查看全部案例 / View All Works
             </TransitionLink>
           </div>
@@ -113,13 +117,15 @@ export default function Home() {
 
       <BrandSystemsSection />
 
-      <StudioArtifact />
+      <div className="hidden md:block">
+        <StudioArtifact />
+      </div>
 
-      <section className="border-y border-line px-5 py-24 md:py-32">
+      <section className="border-y border-line px-4 py-[4.5rem] md:px-5 md:py-32">
         <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.82fr_1.18fr] md:items-start">
           <motion.div {...fadeUp}>
             <p className="mb-4 text-xs uppercase tracking-studio text-bone/42">服务能力 / Services</p>
-            <h2 className="font-display text-4xl uppercase leading-none md:text-6xl">品牌全案服务</h2>
+            <h2 className="font-display text-4xl uppercase leading-[0.95] md:text-6xl">品牌全案服务</h2>
             <p className="mt-7 max-w-sm text-sm leading-7 text-bone/50">
               从策略梳理到视觉系统，再到可传播内容落地，为品牌建立统一且可持续的表达方式。
             </p>
@@ -132,7 +138,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-12%" }}
                 transition={{ duration: 0.8, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className="grid gap-5 border-b border-line py-8 transition duration-700 ease-cinematic hover:bg-white/[0.018] md:grid-cols-[0.16fr_0.34fr_0.5fr] md:items-start md:px-4"
+                className="grid gap-4 border-b border-line py-7 transition duration-700 ease-cinematic hover:bg-white/[0.018] md:grid-cols-[0.16fr_0.34fr_0.5fr] md:items-start md:px-4 md:py-8"
               >
                 <p className="text-[0.64rem] uppercase tracking-studio text-bone/32">{String(index + 1).padStart(2, "0")}</p>
                 <div>
@@ -148,11 +154,11 @@ export default function Home() {
 
       <ToolMarquee />
 
-      <section ref={aboutRef} className="px-5 py-24 md:py-32">
+      <section ref={aboutRef} className="px-4 py-[4.5rem] md:px-5 md:py-32">
         <motion.div
           style={{ y: aboutY }}
           {...fadeUp}
-          className="mx-auto grid max-w-7xl gap-10 border-y border-line py-14 md:grid-cols-[0.28fr_0.72fr] md:py-20"
+          className="mx-auto grid max-w-7xl gap-8 border-y border-line py-12 md:grid-cols-[0.28fr_0.72fr] md:py-20"
         >
           <p className="text-xs uppercase tracking-studio text-bone/42">关于我们 / About</p>
           <div>
@@ -179,22 +185,22 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section ref={contactRef} id="contact" className="px-5 pb-12 md:pb-16">
+      <section ref={contactRef} id="contact" className="px-4 pb-10 md:px-5 md:pb-16">
         <motion.div
           style={{ y: contactY }}
           {...fadeUp}
-          className="mx-auto flex min-h-[28rem] max-w-7xl flex-col justify-between border border-line bg-white/[0.025] p-6 md:p-10"
+          className="mx-auto flex min-h-[24rem] max-w-7xl flex-col justify-between border border-line bg-white/[0.025] p-6 md:min-h-[28rem] md:p-10"
         >
           <div className="flex items-center justify-between gap-6 text-xs uppercase tracking-studio text-bone/42">
             <span>联系我们 / Contact</span>
             <span>hello@chuangke.media</span>
           </div>
           <div className="mt-20 max-w-4xl">
-            <h2 className="font-display text-4xl uppercase leading-none md:text-7xl">开始你的品牌项目</h2>
+            <h2 className="font-display text-4xl uppercase leading-[0.95] md:text-7xl">开始你的品牌项目</h2>
             <p className="mt-7 max-w-2xl text-base leading-8 text-bone/58 md:text-lg">
               无论品牌初创还是升级重塑，我们提供从策略到视觉的全案服务。
             </p>
-            <a href="mailto:hello@chuangke.media" className="cinematic-button mt-9 bg-bone text-ink hover:text-bone" data-cursor="button">
+            <a href="mailto:hello@chuangke.media" className="cinematic-button mt-9 w-full bg-bone text-ink hover:text-bone sm:w-auto" data-cursor="button">
               发起合作 / Start a Project
             </a>
           </div>

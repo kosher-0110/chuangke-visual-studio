@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import type { BrandDeck } from "@/data/decks";
 import Image from "next/image";
+import { useState } from "react";
 import TransitionLink from "@/components/TransitionLink";
 
 type DeckCardProps = {
@@ -11,6 +12,8 @@ type DeckCardProps = {
 };
 
 export default function DeckCard({ deck, index }: DeckCardProps) {
+  const [coverMissing, setCoverMissing] = useState(false);
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
@@ -20,16 +23,26 @@ export default function DeckCard({ deck, index }: DeckCardProps) {
       className="group"
     >
       <TransitionLink href={`/decks/${deck.slug}`} className="block" data-cursor="view">
-        <div className="border border-line bg-[#0b0b0a] p-4 transition duration-700 ease-cinematic group-hover:border-white/24 group-hover:bg-white/[0.025]">
+        <div className="border border-line bg-[#0b0b0a] p-3 transition duration-700 ease-cinematic group-hover:border-white/24 group-hover:bg-white/[0.025] md:p-4">
           <div className="media-fallback relative aspect-[4/3] overflow-hidden border border-white/10 bg-[#151513]">
-            <Image
-              src={`/decks/${deck.slug}/cover.jpg`}
-              alt={`${deck.title} 封面`}
-              fill
-              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-              className="object-cover opacity-68 grayscale transition duration-1000 ease-cinematic group-hover:scale-[1.025] group-hover:opacity-56"
-              loading="lazy"
-            />
+            {coverMissing ? (
+              <iframe
+                src={`${deck.pdf}#page=1&toolbar=0&navpanes=0`}
+                title={`${deck.title} PDF 预览`}
+                className="pointer-events-none h-full w-full scale-[1.8] object-cover opacity-56 grayscale transition duration-1000 ease-cinematic group-hover:opacity-48"
+                loading="lazy"
+              />
+            ) : (
+              <Image
+                src={deck.cover}
+                alt={`${deck.title} 封面`}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                className="object-cover opacity-72 grayscale transition duration-1000 ease-cinematic group-hover:scale-[1.025] group-hover:opacity-62"
+                loading="lazy"
+                onError={() => setCoverMissing(true)}
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/18 to-transparent" />
             <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-700 ease-cinematic group-hover:opacity-100">
               <div className="absolute inset-y-[-20%] left-[-55%] w-[38%] rotate-12 bg-gradient-to-r from-transparent via-white/18 to-transparent blur-sm transition-transform duration-[1200ms] ease-cinematic group-hover:translate-x-[370%]" />
@@ -40,7 +53,7 @@ export default function DeckCard({ deck, index }: DeckCardProps) {
             </div>
           </div>
 
-          <div className="pt-5">
+          <div className="pt-4 md:pt-5">
             <div className="mb-4 flex flex-wrap gap-2 text-[0.62rem] uppercase tracking-[0.12em] text-bone/42">
               <span>{deck.pages} 页</span>
               <span>/</span>

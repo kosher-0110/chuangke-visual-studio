@@ -3,7 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import type { Work } from "@/data/works";
-import { getYoutubeThumbnail } from "@/data/works";
+import { getVideoThumbnail } from "@/data/works";
 import MediaImage from "@/components/MediaImage";
 import TransitionLink from "@/components/TransitionLink";
 
@@ -41,7 +41,7 @@ export default function WorkCard({ work, index }: WorkCardProps) {
     y.set(0);
   };
 
-  const youtubePoster = getYoutubeThumbnail(work.youtubeId);
+  const poster = getVideoThumbnail(work.bvid);
   const layoutClass = {
     featured: "md:col-span-2",
     standard: "",
@@ -49,10 +49,10 @@ export default function WorkCard({ work, index }: WorkCardProps) {
     wide: "md:col-span-2"
   }[work.layout];
   const aspectClass = {
-    featured: "aspect-[16/10]",
+    featured: "aspect-[4/5] md:aspect-[16/10]",
     standard: "aspect-[4/5] md:aspect-video",
     tall: "aspect-[4/5] md:aspect-[4/5]",
-    wide: "aspect-video"
+    wide: "aspect-[4/5] md:aspect-video"
   }[work.layout];
 
   return (
@@ -69,7 +69,7 @@ export default function WorkCard({ work, index }: WorkCardProps) {
       <TransitionLink href={`/work/${work.slug}`} className="block" data-cursor="view">
         <div className={`media-fallback relative overflow-hidden border border-line bg-graphite ${aspectClass}`}>
           <MediaImage
-            src={youtubePoster}
+            src={poster}
             alt={`${work.title} poster`}
             className="h-full w-full object-cover opacity-85 transition duration-1000 ease-cinematic group-hover:scale-[1.035] group-hover:opacity-60"
             loading="lazy"
@@ -89,14 +89,14 @@ export default function WorkCard({ work, index }: WorkCardProps) {
           </div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/18 to-transparent" />
-          <div className="absolute left-5 right-5 top-5 flex items-center justify-between text-[0.66rem] uppercase tracking-studio text-bone/55">
+          <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-[0.62rem] uppercase tracking-studio text-bone/55 md:left-5 md:right-5 md:top-5 md:text-[0.66rem]">
             <span>{work.type}</span>
             <span>{work.year}</span>
           </div>
-          <div className="absolute bottom-5 left-5 right-5 translate-y-2 opacity-95 transition duration-700 ease-cinematic group-hover:translate-y-0 md:bottom-6 md:left-6 md:right-6">
+          <div className="absolute bottom-4 left-4 right-4 translate-y-0 opacity-95 transition duration-700 ease-cinematic group-hover:translate-y-0 md:bottom-6 md:left-6 md:right-6 md:translate-y-2">
             <h3 className="font-display text-2xl uppercase leading-none text-bone md:text-4xl">{work.title}</h3>
-            <p className="mt-3 max-w-sm text-sm leading-6 text-bone/58">{work.concept}</p>
-            <p className="mt-5 text-[0.64rem] uppercase tracking-[0.14em] text-bone/42">{work.atmosphere}</p>
+            <p className="mt-3 line-clamp-2 max-w-sm text-sm leading-6 text-bone/58 md:line-clamp-none">{work.concept}</p>
+            <p className="mt-4 hidden text-[0.64rem] uppercase tracking-[0.14em] text-bone/42 md:block">{work.atmosphere}</p>
           </div>
         </div>
       </TransitionLink>

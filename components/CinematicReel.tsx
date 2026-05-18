@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { getYoutubeThumbnail, type Work } from "@/data/works";
+import { getVideoThumbnail, type Work } from "@/data/works";
 import MediaImage from "@/components/MediaImage";
 
 type CinematicReelProps = {
@@ -27,7 +27,7 @@ export default function CinematicReel({ works }: CinematicReelProps) {
             className="media-fallback relative h-28 w-52 shrink-0 overflow-hidden border border-line bg-graphite md:h-40 md:w-80"
           >
             <MediaImage
-              src={getYoutubeThumbnail(work.youtubeId)}
+              src={getVideoThumbnail(work.bvid)}
               alt={`${work.title} reel frame`}
               className="h-full w-full object-cover opacity-70 grayscale transition duration-1000 ease-cinematic hover:opacity-95 hover:grayscale-0"
               loading="lazy"

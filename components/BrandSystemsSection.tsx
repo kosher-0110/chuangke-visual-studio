@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import DeckCard from "@/components/DeckCard";
 import TransitionLink from "@/components/TransitionLink";
-import { featuredDecks, brandDecks } from "@/data/decks";
+import { featuredDecks } from "@/data/decks";
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -14,13 +14,13 @@ const fadeUp = {
 
 export default function BrandSystemsSection() {
   return (
-    <section id="brand-systems" className="relative overflow-hidden border-y border-line bg-[#080807] px-5 py-24 md:py-32">
+    <section id="brand-systems" className="relative overflow-hidden border-y border-line bg-[#080807] px-4 py-[4.5rem] md:px-5 md:py-32">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(242,240,234,0.055),transparent_26rem)]" />
       <div className="relative mx-auto max-w-7xl">
-        <motion.div {...fadeUp} className="mb-12 grid gap-7 md:mb-14 md:grid-cols-[1.15fr_0.85fr] md:items-end">
+        <motion.div {...fadeUp} className="mb-10 grid gap-6 md:mb-14 md:grid-cols-[1.15fr_0.85fr] md:items-end">
           <div>
-            <p className="mb-5 text-xs uppercase tracking-studio text-bone/42">品牌全案 / BRAND SYSTEMS</p>
-            <h2 className="font-display text-5xl uppercase leading-[0.88] text-bone md:text-7xl whitespace-nowrap">品牌提案与视觉系统</h2>
+            <p className="mb-4 text-xs uppercase tracking-studio text-bone/42 md:mb-5">品牌全案 / BRAND SYSTEMS</p>
+            <h2 className="font-display text-4xl uppercase leading-[0.96] text-bone md:whitespace-nowrap md:text-7xl">品牌提案与视觉系统</h2>
           </div>
           <p className="max-w-lg text-sm leading-7 text-bone/52 md:text-base md:leading-8">
             面向品牌发布、招商路演与长期视觉方向，提供完整的品牌提案与视觉系统方案。
@@ -33,8 +33,8 @@ export default function BrandSystemsSection() {
           ))}
         </div>
 
-        <div className="mt-12 flex justify-center">
-          <TransitionLink href="/decks" className="cinematic-button" data-cursor="button">
+        <div className="mt-10 flex justify-center md:mt-12">
+          <TransitionLink href="/decks" className="cinematic-button w-full sm:w-auto" data-cursor="button">
             查看全部方案 / View All Decks
           </TransitionLink>
         </div>

@@ -7,6 +7,7 @@ export type BrandDeck = {
   industry: string;
   summary: string;
   pdf: string;
+  cover: string;
   featured: boolean;
 };
 
@@ -22,6 +23,7 @@ export const brandDecks: BrandDeck[] = [
     industry: "娱乐 / 夜经济",
     summary: "夜乐园品牌视觉系统，涵盖 LOGO、色彩体系与空间导视。",
     pdf: `${deckPath("all-yele")}/brand-system.pdf`,
+    cover: `${deckPath("all-yele")}/cover.png`,
     featured: true
   },
   {
@@ -33,6 +35,7 @@ export const brandDecks: BrandDeck[] = [
     industry: "消费品牌",
     summary: "Golden Face 品牌提案与视觉系统，从主视觉到传播物料完整落地。",
     pdf: `${deckPath("golden-face")}/brand-system.pdf`,
+    cover: `${deckPath("golden-face")}/cover.png`,
     featured: true
   },
   {
@@ -44,6 +47,7 @@ export const brandDecks: BrandDeck[] = [
     industry: "文化 / 生活方式",
     summary: "莫对月品牌视觉提案，以东方美学构建品牌叙事与视觉系统。",
     pdf: `${deckPath("moduiyue")}/brand-system.pdf`,
+    cover: `${deckPath("moduiyue")}/cover.png`,
     featured: true
   },
   {
@@ -55,6 +59,7 @@ export const brandDecks: BrandDeck[] = [
     industry: "消费空间",
     summary: "MAKE CLUB 品牌项目书，品牌定位、视觉系统与空间体验方案。",
     pdf: `${deckPath("make-club")}/brand-system.pdf`,
+    cover: `${deckPath("make-club")}/cover.jpg`,
     featured: false
   },
   {
@@ -66,6 +71,7 @@ export const brandDecks: BrandDeck[] = [
     industry: "餐饮",
     summary: "彼岸码头品牌 LOGO 设计与基础视觉识别规范。",
     pdf: `${deckPath("bian-matou")}/brand-system.pdf`,
+    cover: `${deckPath("bian-matou")}/cover.jpg`,
     featured: false
   },
   {
@@ -77,6 +83,7 @@ export const brandDecks: BrandDeck[] = [
     industry: "餐饮 / 酒馆",
     summary: "坪山仓库酒馆大排档 LOGO 设计与品牌视觉识别系统。",
     pdf: `${deckPath("pingshan-cangku")}/brand-system.pdf`,
+    cover: `${deckPath("pingshan-cangku")}/cover.jpg`,
     featured: false
   },
   {
@@ -88,6 +95,7 @@ export const brandDecks: BrandDeck[] = [
     industry: "消费品牌",
     summary: "热血工匠品牌项目书，品牌策略与视觉系统完整方案。",
     pdf: `${deckPath("rexue-gongjiang")}/brand-system.pdf`,
+    cover: `${deckPath("rexue-gongjiang")}/cover.jpg`,
     featured: false
   },
   {
@@ -99,6 +107,7 @@ export const brandDecks: BrandDeck[] = [
     industry: "商业地产",
     summary: "中洲岛·汇福城品牌视觉全案，商业综合体品牌系统建设。",
     pdf: `${deckPath("zhongzhoudao")}/brand-system.pdf`,
+    cover: `${deckPath("zhongzhoudao")}/cover.jpg`,
     featured: false
   }
 ];

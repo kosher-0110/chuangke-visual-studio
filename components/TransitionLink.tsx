@@ -19,17 +19,35 @@ export default function TransitionLink({
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event);
 
+    if (event.defaultPrevented) {
+      return;
+    }
+
     if (
-      event.defaultPrevented ||
       event.metaKey ||
       event.ctrlKey ||
       event.shiftKey ||
       event.altKey ||
       props.target === "_blank" ||
-      href.startsWith("#") ||
       href.startsWith("mailto:") ||
       /^https?:\/\//.test(href)
     ) {
+      return;
+    }
+
+    if (href.includes("#")) {
+      event.preventDefault();
+
+      const [path, hash] = href.split("#");
+      const targetPath = path || window.location.pathname;
+      const currentPath = window.location.pathname;
+
+      if (targetPath === currentPath) {
+        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      window.location.assign(href);
       return;
     }
 

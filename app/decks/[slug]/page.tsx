@@ -20,19 +20,19 @@ export default function DeckViewerPage({ params }: PageProps) {
 
   return (
     <main className="flex min-h-screen flex-col bg-ink text-bone">
-      <nav className="flex items-center justify-between px-5 py-4 text-xs uppercase tracking-studio text-bone/45 md:px-8 md:py-5">
+      <nav className="flex items-center justify-between gap-4 px-4 py-4 text-xs uppercase tracking-studio text-bone/45 md:px-8 md:py-5">
         <TransitionLink href="/decks" className="transition duration-500 hover:text-bone" data-cursor="button">
           返回方案列表
         </TransitionLink>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 md:gap-6">
           <span className="text-bone/32">{deck.category}</span>
           <span>创科视觉</span>
         </div>
       </nav>
 
-      <div className="flex-1 px-2 py-4 md:px-8 md:py-6">
+      <div className="flex-1 px-4 py-4 md:px-8 md:py-6">
         <div className="mx-auto mb-6 max-w-5xl md:mb-8">
-          <h1 className="font-display text-3xl uppercase leading-none text-bone md:text-5xl">{deck.title}</h1>
+          <h1 className="font-display text-3xl uppercase leading-[0.95] text-bone md:text-5xl">{deck.title}</h1>
           <div className="mt-3 flex flex-wrap gap-3 text-xs text-bone/42">
             <span>{deck.pages} 页</span>
             <span>/</span>
@@ -44,9 +44,17 @@ export default function DeckViewerPage({ params }: PageProps) {
         <iframe
           src={`/decks/${deck.slug}/brand-system.pdf#toolbar=0`}
           className="mx-auto block w-full max-w-5xl flex-1 border border-line"
-          style={{ height: "calc(100vh - 12rem)" }}
+          style={{ height: "min(68svh, calc(100vh - 12rem))" }}
           title={deck.title}
         />
+        <a
+          href={`/decks/${deck.slug}/brand-system.pdf`}
+          target="_blank"
+          rel="noreferrer"
+          className="cinematic-button mx-auto mt-4 flex w-full max-w-5xl md:hidden"
+        >
+          打开 PDF / Open PDF
+        </a>
       </div>
     </main>
   );

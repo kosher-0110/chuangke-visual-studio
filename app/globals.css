@@ -99,8 +99,9 @@ a {
 
 @media (max-width: 767px) {
   .hero-title-line {
-    font-size: clamp(4rem, 22vw, 7.5rem);
+    font-size: clamp(3.8rem, 21vw, 6.4rem);
     letter-spacing: -0.035em;
+    line-height: 0.82;
   }
 }
 
