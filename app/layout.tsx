@@ -6,8 +6,8 @@ import CursorOverlay from "@/components/CursorOverlay";
 import PageTransitionProvider from "@/components/PageTransitionProvider";
 
 export const metadata: Metadata = {
-  title: "ZOOR Visual Studio",
-  description: "AI films, brand visuals, and cinematic campaigns."
+  title: "VISUAL STUDIO",
+  description: "AI 影像、品牌视觉与电影化 campaign 内容。"
 };
 
 export default function RootLayout({

@@ -35,6 +35,55 @@ const fragmentShader = `
   }
 `;
 
+function DeepVeil() {
+  const material = useRef<ShaderMaterial>(null);
+
+  useFrame((state) => {
+    if (material.current) {
+      material.current.uniforms.uTime.value = state.clock.elapsedTime;
+    }
+  });
+
+  return (
+    <Float speed={0.22} rotationIntensity={0.05} floatIntensity={0.1}>
+      <mesh rotation={[-0.15, 0.42, 0.08]} position={[-0.2, 0.12, -0.5]}>
+        <planeGeometry args={[5.6, 3, 64, 64]} />
+        <shaderMaterial
+          ref={material}
+          transparent
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+          uniforms={{ uTime: { value: 0 } }}
+          vertexShader={`
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            void main() {
+              vUv = uv;
+              vNormal = normal;
+              vec3 pos = position;
+              pos.z += sin(pos.x * 1.4 + pos.y * 0.9) * 0.06;
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+            }
+          `}
+          fragmentShader={`
+            uniform float uTime;
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            void main() {
+              float veil = smoothstep(0.05, 0.7, vUv.x) * (1.0 - smoothstep(0.4, 1.0, vUv.y)) * 0.28;
+              float drift = 0.5 + 0.5 * sin(uTime * 0.15 + vUv.x * 3.6);
+              vec3 cold = vec3(0.48, 0.62, 0.72);
+              vec3 warm = vec3(0.88, 0.84, 0.76);
+              vec3 color = mix(cold, warm, drift) * veil;
+              gl_FragColor = vec4(color, veil * 0.18);
+            }
+          `}
+        />
+      </mesh>
+    </Float>
+  );
+}
+
 function LightVeil({ reduced }: { reduced: boolean }) {
   const mesh = useRef<Mesh>(null);
   const material = useRef<ShaderMaterial>(null);
@@ -107,6 +156,7 @@ export default function AbstractLight() {
       >
         <color attach="background" args={["#050505"]} />
         <ambientLight intensity={0.35} />
+        <DeepVeil />
         <LightVeil reduced={reduced} />
         <Environment preset="city" />
       </Canvas>

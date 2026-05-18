@@ -51,7 +51,7 @@ export default function CursorOverlay() {
         style={{ left: ringX, top: ringY }}
       >
         <motion.span animate={{ opacity: mode === "view" ? 1 : 0 }} transition={{ duration: 0.25 }}>
-          View
+          查看
         </motion.span>
       </motion.div>
     </>

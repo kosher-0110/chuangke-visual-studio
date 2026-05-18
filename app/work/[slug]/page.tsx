@@ -19,12 +19,12 @@ export function generateMetadata({ params }: WorkPageProps) {
 
   if (!work) {
     return {
-      title: "Work Not Found | ZOOR Visual Studio"
+      title: "Work Not Found | VISUAL STUDIO"
     };
   }
 
   return {
-    title: `${work.title} | ZOOR Visual Studio`,
+    title: `${work.title} | VISUAL STUDIO`,
     description: work.concept
   };
 }

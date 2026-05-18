@@ -1,17 +1,49 @@
 "use client";
 
-import Link from "next/link";
-import type { ComponentProps, ReactNode } from "react";
+import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
+import { useTransition } from "@/components/PageTransitionProvider";
 
-type TransitionLinkProps = ComponentProps<typeof Link> & {
+type TransitionLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children: ReactNode;
-  className?: string;
-  "data-cursor"?: string;
+  href: string;
 };
 
 export default function TransitionLink({
   children,
+  href,
+  onClick,
   ...props
 }: TransitionLinkProps) {
-  return <Link {...props}>{children}</Link>;
+  const { navigate } = useTransition();
+
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    onClick?.(event);
+
+    if (
+      event.defaultPrevented ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      props.target === "_blank" ||
+      href.startsWith("#") ||
+      href.startsWith("mailto:") ||
+      /^https?:\/\//.test(href)
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    navigate(href);
+  };
+
+  return (
+    <a
+      href={href}
+      onClick={handleClick}
+      {...props}
+    >
+      {children}
+    </a>
+  );
 }

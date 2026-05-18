@@ -13,7 +13,7 @@ type MediaImageProps = {
 export default function MediaImage({ src, alt, className, loading = "lazy" }: MediaImageProps) {
   const [missing, setMissing] = useState(false);
 
-  if (missing) {
+  if (missing || !src) {
     return <div className={className} aria-label={alt} />;
   }
 

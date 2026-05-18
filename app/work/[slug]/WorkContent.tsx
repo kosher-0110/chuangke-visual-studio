@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import type { Work } from "@/data/works";
 import { getYoutubeEmbed } from "@/data/works";
 import TransitionLink from "@/components/TransitionLink";
+import WorkAmbientLight from "@/components/WorkAmbientLight";
 
 const fadeSection = {
   initial: { opacity: 0, y: 18 },
@@ -13,12 +14,13 @@ const fadeSection = {
 
 export default function WorkContent({ work }: { work: Work }) {
   return (
-    <main className="min-h-screen bg-ink px-5 py-6 text-bone md:py-8">
+    <main className="relative min-h-screen bg-ink px-5 py-6 text-bone md:py-8">
+      <WorkAmbientLight />
       <nav className="mx-auto flex max-w-7xl items-center justify-between text-xs uppercase tracking-studio text-bone/45">
         <TransitionLink href="/#work" className="transition duration-500 hover:text-bone" data-cursor="button">
           Back to Work
         </TransitionLink>
-        <span>ZOOR Visual Studio</span>
+        <span>VISUAL STUDIO</span>
       </nav>
 
       <motion.section {...fadeSection} className="mx-auto max-w-7xl pt-16 md:pt-24">

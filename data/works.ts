@@ -12,6 +12,7 @@ export type Work = {
 };
 
 export function getYoutubeThumbnail(youtubeId: string, quality: "default" | "mq" | "hq" | "maxres" = "maxres") {
+  if (!youtubeId || youtubeId === "YOUR_VIDEO_ID") return "";
   return `https://img.youtube.com/vi/${youtubeId}/${quality}default.jpg`;
 }
 

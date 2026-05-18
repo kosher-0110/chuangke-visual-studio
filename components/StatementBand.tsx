@@ -21,7 +21,7 @@ export default function StatementBand() {
         From Prompt to Cinema
       </motion.p>
       <div className="mx-auto mt-8 grid max-w-7xl gap-6 px-5 md:grid-cols-[0.7fr_1.3fr] md:items-end">
-        <p className="text-xs uppercase tracking-studio text-ink/45">Visual Language</p>
+        <p className="text-xs uppercase tracking-studio text-ink/45">视觉语言 / VISUAL LANGUAGE</p>
         <p className="max-w-3xl text-xl leading-9 text-ink/72 md:text-3xl md:leading-tight">
           A restrained image system for brand films, AI campaigns, posters and story-driven moving images.
         </p>

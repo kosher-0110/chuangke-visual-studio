@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-const titleLines = ["ZOOR", "VISUAL", "STUDIO"];
+const titleLines = ["VISUAL", "STUDIO"];
 
 export default function HeroKineticTitle() {
   const x = useMotionValue(0);
