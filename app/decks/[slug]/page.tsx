@@ -42,15 +42,15 @@ export default function DeckViewerPage({ params }: PageProps) {
           </div>
         </div>
         <iframe
-          src={`/decks/${deck.slug}/brand-system.pdf#toolbar=0`}
+          src={`https://chuanke-1434305026.cos.ap-guangzhou.myqcloud.com/decks/${deck.slug}/brand-system.pdf#toolbar=0`}
           className="mx-auto block w-full max-w-5xl flex-1 border border-line"
           style={{ height: "min(68svh, calc(100vh - 12rem))" }}
           title={deck.title}
         />
         <a
-          href={`/decks/${deck.slug}/brand-system.pdf`}
+          href={`https://chuanke-1434305026.cos.ap-guangzhou.myqcloud.com/decks/${deck.slug}/brand-system.pdf`}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="cinematic-button mx-auto mt-4 flex w-full max-w-5xl md:hidden"
         >
           打开 PDF / Open PDF

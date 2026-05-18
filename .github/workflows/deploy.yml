@@ -24,6 +24,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: /chuangke-visual-studio
+      - run: rm -rf out/decks/*/brand-system.pdf
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
