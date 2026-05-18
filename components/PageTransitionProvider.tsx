@@ -2,7 +2,7 @@
 
 import { motion, useAnimationControls } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { createContext, useCallback, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 type TransitionCtx = {
@@ -20,18 +20,28 @@ export default function PageTransitionProvider({ children }: { children: ReactNo
   const controls = useAnimationControls();
   const [active, setActive] = useState(false);
 
+  // Reset curtain on browser back/forward
+  useEffect(() => {
+    const reset = () => {
+      controls.set("hidden");
+      setActive(false);
+    };
+    window.addEventListener("popstate", reset);
+    return () => window.removeEventListener("popstate", reset);
+  }, [controls]);
+
   const navigate = useCallback(
     async (href: string) => {
       if (active) return;
       setActive(true);
-      await controls.start("covered");
+      controls.set("covered");
       router.push(href);
-      window.setTimeout(() => {
-        void controls.start("exit").then(() => {
+      setTimeout(() => {
+        controls.start("exit").then(() => {
           controls.set("hidden");
           setActive(false);
         });
-      }, 120);
+      }, 180);
     },
     [active, controls, router],
   );
@@ -45,14 +55,12 @@ export default function PageTransitionProvider({ children }: { children: ReactNo
         animate={controls}
         variants={{
           hidden: { opacity: 0 },
-          covered: { opacity: 0.82 },
+          covered: { opacity: 0.92 },
           exit: { opacity: 0 }
         }}
-        transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         aria-hidden="true"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(242,240,234,0.055),transparent_34rem)]" />
-      </motion.div>
+      />
     </Ctx.Provider>
   );
 }
