@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
@@ -8,7 +7,5 @@ const nextConfig = {
     unoptimized: true
   }
 };
-
-export default nextConfig;
 
 export default nextConfig;
