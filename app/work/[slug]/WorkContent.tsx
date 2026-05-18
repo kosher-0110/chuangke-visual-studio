@@ -18,9 +18,9 @@ export default function WorkContent({ work }: { work: Work }) {
       <WorkAmbientLight />
       <nav className="mx-auto flex max-w-7xl items-center justify-between text-xs uppercase tracking-studio text-bone/45">
         <TransitionLink href="/#work" className="transition duration-500 hover:text-bone" data-cursor="button">
-          Back to Work
+          返回作品
         </TransitionLink>
-        <span>VISUAL STUDIO</span>
+        <span>创科视觉</span>
       </nav>
 
       <motion.section {...fadeSection} className="mx-auto max-w-7xl pt-16 md:pt-24">
@@ -74,7 +74,7 @@ export default function WorkContent({ work }: { work: Work }) {
         className="mx-auto max-w-7xl py-16 text-center md:py-24"
       >
         <TransitionLink href="/#work" className="cinematic-button" data-cursor="button">
-          Return to Work
+          返回案例
         </TransitionLink>
       </motion.section>
     </main>

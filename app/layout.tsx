@@ -6,8 +6,8 @@ import CursorOverlay from "@/components/CursorOverlay";
 import PageTransitionProvider from "@/components/PageTransitionProvider";
 
 export const metadata: Metadata = {
-  title: "VISUAL STUDIO",
-  description: "AI 影像、品牌视觉与电影化 campaign 内容。"
+  title: "创科视觉 | 品牌全案与视觉系统",
+  description: "福建创科文化传媒，专注品牌故事、品牌视觉与整合传播全案。"
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <body>
         <PageTransitionProvider>
           <SmoothScroll />

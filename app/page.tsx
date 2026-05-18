@@ -6,7 +6,6 @@ import AbstractLight from "@/components/AbstractLight";
 import BrandSystemsSection from "@/components/BrandSystemsSection";
 import CinematicReel from "@/components/CinematicReel";
 import HeroKineticTitle from "@/components/HeroKineticTitle";
-import StatementBand from "@/components/StatementBand";
 import StudioArtifact from "@/components/StudioArtifact";
 import ToolMarquee from "@/components/ToolMarquee";
 import TransitionLink from "@/components/TransitionLink";
@@ -15,19 +14,19 @@ import { works } from "@/data/works";
 
 const services = [
   {
-    title: "品牌视觉全案",
-    label: "Brand Visual System",
-    description: "品牌主视觉、KV、海报与传播物料延展"
+    title: "品牌故事",
+    label: "Brand Story",
+    description: "挖掘品牌基因，构建叙事主线，为品牌找到差异化的表达方式。"
   },
   {
-    title: "AI 影像制作",
-    label: "AI Film Production",
-    description: "品牌影片、产品影像与实验性动态视觉"
+    title: "品牌视觉",
+    label: "Brand Visual",
+    description: "主视觉、LOGO、字体、色彩体系与品牌规范，建立统一的视觉识别。"
   },
   {
-    title: "TVC / 宣传片视觉导演",
-    label: "TVC Visual Direction",
-    description: "镜头语言、画面调性与视觉风格把控"
+    title: "传播内容",
+    label: "Campaign Content",
+    description: "品牌影片、产品影像、海报与社交传播物料，让视觉系统落地为可传播的内容。"
   }
 ];
 
@@ -68,14 +67,14 @@ export default function Home() {
           <p className="mb-8 text-xs uppercase tracking-studio text-bone/45">福建创科文化传媒有限公司</p>
           <HeroKineticTitle />
           <p className="mt-8 text-xs uppercase tracking-studio text-bone/62 md:text-sm">
-            AI 影像 · 品牌视觉 · 电影化整合传播
+            品牌故事 · 品牌视觉 · 整合传播
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a href="#work" className="cinematic-button bg-bone text-ink hover:text-bone" data-cursor="button">
-              查看作品
+              查看案例
             </a>
             <a href="#contact" className="cinematic-button" data-cursor="button">
-              联系我
+              联系我们
             </a>
           </div>
         </motion.div>
@@ -90,11 +89,11 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <motion.div {...fadeUp} className="mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
             <div>
-              <p className="mb-4 text-xs uppercase tracking-studio text-bone/42">精选作品 / Selected Works</p>
-              <h2 className="font-display text-4xl uppercase leading-none md:text-6xl">电影化视觉系统</h2>
+              <p className="mb-4 text-xs uppercase tracking-studio text-bone/42">精选案例 / Selected Works</p>
+              <h2 className="font-display text-4xl uppercase leading-none md:text-6xl">品牌视觉系统</h2>
             </div>
             <p className="max-w-md text-sm leading-7 text-bone/58">
-              为品牌、叙事项目和面向未来的发布活动，打造 AI 驱动的影像作品、传播视觉与视觉世界。
+              从品牌故事到视觉资产，为品牌构建完整的传播体系。
             </p>
           </motion.div>
 
@@ -106,7 +105,7 @@ export default function Home() {
 
           <div className="mt-12 flex justify-center">
             <TransitionLink href="/work" className="cinematic-button" data-cursor="button">
-              查看全部作品 / View All Works
+              查看全部案例 / View All Works
             </TransitionLink>
           </div>
         </div>
@@ -114,17 +113,18 @@ export default function Home() {
 
       <BrandSystemsSection />
 
-      <StatementBand />
-
       <StudioArtifact />
 
       <section className="border-y border-line px-5 py-24 md:py-32">
-        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-start">
+        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.82fr_1.18fr] md:items-start">
           <motion.div {...fadeUp}>
             <p className="mb-4 text-xs uppercase tracking-studio text-bone/42">服务能力 / Services</p>
-            <h2 className="font-display text-4xl uppercase leading-none md:text-6xl">Visual Services for Brands & Campaigns</h2>
+            <h2 className="font-display text-4xl uppercase leading-none md:text-6xl">品牌全案服务</h2>
+            <p className="mt-7 max-w-sm text-sm leading-7 text-bone/50">
+              从策略梳理到视觉系统，再到可传播内容落地，为品牌建立统一且可持续的表达方式。
+            </p>
           </motion.div>
-          <div className="grid gap-4">
+          <div className="border-t border-line">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -132,11 +132,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-12%" }}
                 transition={{ duration: 0.8, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className="border border-line px-5 py-6 transition duration-700 ease-cinematic hover:border-white/28 hover:bg-white/[0.025] md:px-6"
+                className="grid gap-5 border-b border-line py-8 transition duration-700 ease-cinematic hover:bg-white/[0.018] md:grid-cols-[0.16fr_0.34fr_0.5fr] md:items-start md:px-4"
               >
-                <p className="text-xs uppercase tracking-studio text-bone/42">{service.label}</p>
-                <h3 className="mt-4 font-display text-2xl uppercase leading-none text-bone md:text-3xl">{service.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-bone/56">{service.description}</p>
+                <p className="text-[0.64rem] uppercase tracking-studio text-bone/32">{String(index + 1).padStart(2, "0")}</p>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.14em] text-bone/42">{service.label}</p>
+                  <h3 className="mt-3 font-display text-2xl uppercase leading-none text-bone md:text-3xl">{service.title}</h3>
+                </div>
+                <p className="max-w-xl text-sm leading-7 text-bone/56">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -157,13 +160,13 @@ export default function Home() {
               我们为品牌构建可传播的视觉系统。
             </p>
             <p className="mt-8 max-w-3xl text-base leading-8 text-bone/56 md:text-lg md:leading-9">
-              通过 AI 影像、品牌主视觉、分镜脚本与动态内容制作，将抽象概念转化为可落地的影片、海报与 campaign 视觉资产。
+              福建创科文化传媒专注于品牌全案服务，从品牌策略、故事框架到视觉执行，帮助品牌在复杂媒介环境中建立统一的视觉身份。
             </p>
             <div className="mt-10 grid gap-4 border-t border-line pt-7 sm:grid-cols-3">
               {[
-                ["01", "Visual Strategy", "视觉策略"],
-                ["02", "Film Production", "影像制作"],
-                ["03", "Campaign Assets", "内容延展"]
+                ["01", "Strategy First", "策略先行"],
+                ["02", "Visual Design", "视觉转化"],
+                ["03", "Content Delivery", "内容落地"]
               ].map(([index, title, label]) => (
                 <div key={title}>
                   <p className="text-[0.62rem] uppercase tracking-studio text-bone/32">{index}</p>
@@ -183,16 +186,16 @@ export default function Home() {
           className="mx-auto flex min-h-[28rem] max-w-7xl flex-col justify-between border border-line bg-white/[0.025] p-6 md:p-10"
         >
           <div className="flex items-center justify-between gap-6 text-xs uppercase tracking-studio text-bone/42">
-            <span>联系 / Contact</span>
-            <span>hello@zoor.studio</span>
+            <span>联系我们 / Contact</span>
+            <span>hello@chuangke.media</span>
           </div>
           <div className="mt-20 max-w-4xl">
-            <h2 className="font-display text-4xl uppercase leading-none md:text-7xl">开始合作</h2>
+            <h2 className="font-display text-4xl uppercase leading-none md:text-7xl">开始你的品牌项目</h2>
             <p className="mt-7 max-w-2xl text-base leading-8 text-bone/58 md:text-lg">
-              适用于品牌影片、AI 视觉 campaign、音乐影像与实验性叙事项目。
+              无论品牌初创还是升级重塑，我们提供从策略到视觉的全案服务。
             </p>
-            <a href="mailto:hello@zoor.studio" className="cinematic-button mt-9 bg-bone text-ink hover:text-bone" data-cursor="button">
-              Start a Project
+            <a href="mailto:hello@chuangke.media" className="cinematic-button mt-9 bg-bone text-ink hover:text-bone" data-cursor="button">
+              发起合作 / Start a Project
             </a>
           </div>
         </motion.div>

@@ -19,12 +19,12 @@ export function generateMetadata({ params }: WorkPageProps) {
 
   if (!work) {
     return {
-      title: "Work Not Found | VISUAL STUDIO"
+      title: "案例未找到 | 创科视觉"
     };
   }
 
   return {
-    title: `${work.title} | VISUAL STUDIO`,
+    title: `${work.title} | 创科视觉`,
     description: work.concept
   };
 }

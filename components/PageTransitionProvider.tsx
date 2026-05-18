@@ -1,10 +1,9 @@
 "use client";
 
-import { animate } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { createContext, useCallback, useContext, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import type { ReactNode } from "react";
-import TransitionPortal from "@/components/TransitionPortal";
 
 type TransitionCtx = {
   navigate: (href: string) => void;
@@ -18,46 +17,42 @@ export function useTransition() {
 
 export default function PageTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
-  const progressRef = useRef(0);
-  const [phase, setPhase] = useState<"idle" | "closing" | "opening">("idle");
-  const pending = useRef<string | null>(null);
+  const controls = useAnimationControls();
+  const [active, setActive] = useState(false);
 
   const navigate = useCallback(
-    (href: string) => {
-      if (phase !== "idle") return;
-      pending.current = href;
-      setPhase("closing");
-
-      animate(0, 1, {
-        duration: 0.65,
-        ease: [0.32, 0, 0.67, 0],
-        onUpdate: (v) => {
-          progressRef.current = v;
-        },
-      }).then(() => {
-        if (pending.current) {
-          router.push(pending.current);
-          pending.current = null;
-        }
-        setPhase("opening");
-        animate(1, 0, {
-          duration: 0.55,
-          ease: [0.33, 1, 0.68, 1],
-          onUpdate: (v) => {
-            progressRef.current = v;
-          },
-        }).then(() => {
-          setPhase("idle");
+    async (href: string) => {
+      if (active) return;
+      setActive(true);
+      await controls.start("covered");
+      router.push(href);
+      window.setTimeout(() => {
+        void controls.start("exit").then(() => {
+          controls.set("hidden");
+          setActive(false);
         });
-      });
+      }, 120);
     },
-    [phase, router],
+    [active, controls, router],
   );
 
   return (
     <Ctx.Provider value={{ navigate }}>
       {children}
-      {phase !== "idle" && <TransitionPortal progressRef={progressRef} />}
+      <motion.div
+        className="pointer-events-none fixed inset-0 z-[100] bg-[#030303]"
+        initial="hidden"
+        animate={controls}
+        variants={{
+          hidden: { opacity: 0 },
+          covered: { opacity: 0.82 },
+          exit: { opacity: 0 }
+        }}
+        transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(242,240,234,0.055),transparent_34rem)]" />
+      </motion.div>
     </Ctx.Provider>
   );
 }

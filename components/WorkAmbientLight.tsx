@@ -53,6 +53,7 @@ function DriftVeil() {
           transparent
           depthWrite={false}
           blending={THREE.AdditiveBlending}
+          uniforms={{ uTime: { value: 0 } }}
           vertexShader={vertex}
           fragmentShader={fragment}
         />

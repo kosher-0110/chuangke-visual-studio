@@ -18,12 +18,12 @@ export default function StatementBand() {
         style={{ x, opacity }}
         className="whitespace-nowrap font-display text-[17vw] font-medium uppercase leading-none"
       >
-        From Prompt to Cinema
+        From Story to System
       </motion.p>
       <div className="mx-auto mt-8 grid max-w-7xl gap-6 px-5 md:grid-cols-[0.7fr_1.3fr] md:items-end">
-        <p className="text-xs uppercase tracking-studio text-ink/45">视觉语言 / VISUAL LANGUAGE</p>
+        <p className="text-xs uppercase tracking-studio text-ink/45">品牌叙事 / BRAND NARRATIVE</p>
         <p className="max-w-3xl text-xl leading-9 text-ink/72 md:text-3xl md:leading-tight">
-          A restrained image system for brand films, AI campaigns, posters and story-driven moving images.
+          为每一个品牌找到属于它的故事，并将故事转化为可传播的视觉语言。
         </p>
       </div>
     </section>

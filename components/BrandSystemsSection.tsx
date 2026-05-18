@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import DeckCard from "@/components/DeckCard";
 import TransitionLink from "@/components/TransitionLink";
-import { brandDecks } from "@/data/decks";
+import { featuredDecks, brandDecks } from "@/data/decks";
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -20,15 +20,15 @@ export default function BrandSystemsSection() {
         <motion.div {...fadeUp} className="mb-12 grid gap-7 md:mb-14 md:grid-cols-[1.15fr_0.85fr] md:items-end">
           <div>
             <p className="mb-5 text-xs uppercase tracking-studio text-bone/42">品牌全案 / BRAND SYSTEMS</p>
-            <h2 className="font-display text-5xl uppercase leading-[0.88] text-bone md:text-8xl">Brand Systems</h2>
+            <h2 className="font-display text-5xl uppercase leading-[0.88] text-bone md:text-7xl whitespace-nowrap">品牌提案与视觉系统</h2>
           </div>
           <p className="max-w-lg text-sm leading-7 text-bone/52 md:text-base md:leading-8">
-            Complete campaign decks and visual identity proposals for brand launches, pitches and long-form visual direction.
+            面向品牌发布、招商路演与长期视觉方向，提供完整的品牌提案与视觉系统方案。
           </p>
         </motion.div>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {brandDecks.map((deck, index) => (
+          {featuredDecks.map((deck, index) => (
             <DeckCard key={deck.slug} deck={deck} index={index} />
           ))}
         </div>
