@@ -4,7 +4,7 @@ import { brandDecks } from "@/data/decks";
 
 export const metadata = {
   title: "品牌提案归档 | 创科视觉",
-  description: "品牌视觉全案、campaign 提案与可落地视觉系统的 PDF 归档。"
+  description: "品牌视觉全案、campaign 提案与可落地视觉系统 / Brand visual systems, campaign proposals & deliverable visual identities."
 };
 
 export default function DecksPage() {
@@ -21,10 +21,10 @@ export default function DecksPage() {
         <div className="mb-12 grid gap-8 md:mb-16 md:grid-cols-[0.85fr_1.15fr] md:items-end">
           <div>
             <p className="mb-4 text-xs uppercase tracking-studio text-bone/42">品牌全案 / Brand Decks</p>
-            <h1 className="font-display text-5xl uppercase leading-none md:text-8xl">品牌提案归档</h1>
+            <h1 className="font-display text-5xl uppercase leading-none md:text-7xl whitespace-nowrap">品牌提案归档 / Brand Archive</h1>
           </div>
           <p className="max-w-xl text-sm leading-7 text-bone/58 md:text-base md:leading-8">
-            品牌视觉全案、campaign 提案与可落地视觉系统的 PDF 归档。
+            品牌视觉全案、campaign 提案与可落地视觉系统 / Brand visual systems, campaign proposals & deliverable visual identities.
           </p>
         </div>
 
